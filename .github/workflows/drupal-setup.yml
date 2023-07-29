@@ -1,7 +1,8 @@
 name: Drupal setup workflow
+
 on:
   push:
-  branches: ["master"]
+    branches: ["master"]
 
 jobs:
   buid:

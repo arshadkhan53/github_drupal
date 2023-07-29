@@ -12,7 +12,11 @@ jobs:
     steps:
       - name: Get the code
         uses: actions/checkout@v3
-
+      - run: chown -R 1001:1001 /home/runner/work/gh_drupal/gh_drupal
+      - name: Add ssh key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Validate composer
         run: composer validate --strict
       - name: composer cache dir
@@ -42,4 +46,8 @@ jobs:
       - name: Initialise git repo
         run: |
           git init
-          ls -la
+          git remote add origin ${{ secrets.GIT_REPO_URL }}
+          git checkout -b ${{ github.ref_name }}-build
+          git add .
+          git commit -m "Deployed artifacts."
+          git push origin ${{ github.ref_name }}-build

@@ -8,11 +8,11 @@ jobs:
   buid:
     runs-on: ubuntu-latest
     steps:
-      name: Get the code
-      uses: actions/checkout
+      - name: Get the code
+        uses: actions/checkout@v3
 
-      name: Validate composer
-      run: composer validate --strict
+      - name: Validate composer
+        run: composer validate --strict
 
-      name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress

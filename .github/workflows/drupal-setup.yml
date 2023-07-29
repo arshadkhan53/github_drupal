@@ -34,3 +34,12 @@ jobs:
         with:
           name: drupal-build
           path: ./
+
+      - name: Deploy artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: drupal-build
+      - name: Initialise git repo
+        run: |
+          git init
+          ls -la

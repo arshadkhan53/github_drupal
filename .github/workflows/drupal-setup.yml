@@ -3,6 +3,8 @@ name: Drupal setup workflow
 on:
   push:
     branches: ["master"]
+  pull_request:
+    branches: ["master"]
 
 jobs:
   buid:

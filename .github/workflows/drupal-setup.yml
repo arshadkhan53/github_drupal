@@ -1,0 +1,17 @@
+name: Drupal setup workflow
+on:
+  push:
+  branches: ["master"]
+
+jobs:
+  buid:
+    runs-on: ubuntu-latest
+    steps:
+      name: Get the code
+      uses: actions/checkout
+
+      name: Validate composer
+      run: composer validate --strict
+
+      name: Install dependencies
+      run: composer install --prefer-dist --no-progress

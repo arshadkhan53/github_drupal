@@ -48,8 +48,6 @@ jobs:
       - name: Initialise git repo
         run: |
           ls -la
-          git init
-          git remote add origin ${{ secrets.GIT_REPO_URL }}
           git checkout -b ${{ github.ref_name }}-build
           git add .
           git commit -m "Deployed artifacts."

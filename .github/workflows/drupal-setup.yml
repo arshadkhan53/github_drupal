@@ -50,6 +50,8 @@ jobs:
           ls -la
           git config --global user.email ${{ secrets.EMAIL_ID }}
           git config --global user.name ${{ secrets.NAME }}
+          git remote remove origin
+          git remote add origin ${{ secrets.GIT_REPO_URL }}
           git checkout -b ${{ github.ref_name }}-build
           git add .
           git commit -m "Deployed artifacts."

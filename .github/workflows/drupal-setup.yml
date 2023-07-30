@@ -48,6 +48,8 @@ jobs:
       - name: Initialise git repo
         run: |
           ls -la
+          git config --global user.email ${{ secrets.EMAIL_ID }}
+          git config --global user.name ${{ secrets.NAME }}
           git checkout -b ${{ github.ref_name }}-build
           git add .
           git commit -m "Deployed artifacts."

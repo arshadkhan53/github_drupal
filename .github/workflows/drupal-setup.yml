@@ -38,9 +38,11 @@ jobs:
         with:
           name: drupal-build
           path: ./
-
+      - name: set permission
+        run: chmod -R 777 /home/runner/work/gh_drupal/gh_drupal/.git
       - name: Deploy artifacts
         uses: actions/download-artifact@v3
+        continue-on-error: true
         with:
           name: drupal-build
       - name: Initialise git repo

@@ -53,6 +53,4 @@ jobs:
           git remote remove origin
           git remote add origin ${{ secrets.GIT_REPO_URL }}
           git checkout -b ${{ github.ref_name }}-build
-          git add .
-          git commit -m "Deployed artifacts."
           git push origin ${{ github.ref_name }}-build
